@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   // be sure to include its associated Products
   // Access our Category model and run .findAll() method)
   // Category.findAll() is the JavaScript equivalent of the following SQL query: SELECT * FROM category;
-  User.findAll({
+  Category.findAll({
     attributes: [
       'id',
       'category_name'
