@@ -7,12 +7,80 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
+  // Access our Product model and run .findAll() method)
+  // Product.findAll() is the JavaScript equivalent of the following SQL query: SELECT * FROM product;
+  Product.findAll({
+    attributes: [
+      'id',
+      'product_name'
+    ],
+    include: [
+      {
+        model: Category,
+        attributes: [
+          'id',
+          'category_name'
+        ]
+      },
+      {
+        model: Tag,
+        attributes: [
+          'id',
+          'tag_name'
+        ]
+      }
+    ]
+  })
+    .then(dbProductData => res.json(dbProductData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  // We want to find a product where its id value equals whatever req.params.id is, 
+  // much like the following SQL query: SELECT * FROM product WHERE id = 1;
+  Product.findOne({
+    where: {
+      id: req.params.id
+    },
+    // replace the existing `include` with this
+    include: [
+      {
+        model: Category,
+        attributes: [
+          'id',
+          'category_name'
+        ]
+      },
+      // include the Comment model here:
+      {
+        model: Tag,
+        attributes: [
+          'id',
+          'tag_name'
+        ],
+      }
+    ]
+  })
+    // if the .then() method returns nothing from the query, 
+    // we send a 404 status back to the client to indicate everything's 
+    // okay and they just asked for the wrong piece of data.
+    .then(dbProductData => {
+      if (!dbProductData) {
+        res.status(404).json({ message: 'User not found with this id' });
+        return;
+      }
+      res.json(dbProductData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // create new product
