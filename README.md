@@ -5,8 +5,10 @@ Internet retail, also known as e-commerce, is the largest sector of the electron
 
 Your challenge is to build the back end for an e-commerce site. You’ll take a working Express.js API and configure it to use Sequelize to interact with a MySQL database.
 
-![Screen Shot](ScreenShotEmpTracker.png)
-Here's a link to the recorded video: [Employee Tracker](https://watch.screencastify.com/v/fXXAdpaFZztPtN9wI5cS)
+![Screen Shot](ScreenShot-1.png)
+![Screen Shot](ScreenShot-2.png)
+![Screen Shot](ScreenShot-3.png)
+Here's a link to the recorded video: [E-commerce Backend](https://watch.screencastify.com/v/xw7REY7pUMMGRjfYWPTI)
 
 ## Table of Contents
   - [Description](#description)
@@ -54,7 +56,7 @@ Here's a link to the recorded video: [Employee Tracker](https://watch.screencast
 
 
 ## Usage
-* See the video for usage examples [Employee Tracker](https://watch.screencastify.com/v/fXXAdpaFZztPtN9wI5cS) 
+* See the video for usage examples [E-commerce Backend](https://watch.screencastify.com/v/xw7REY7pUMMGRjfYWPTI) 
 
 ## Contributing
 :octocat: [kea6t](https://github.com/kea6t)
